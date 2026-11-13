@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Editor Local · CV Adrian Sotolongo Rodríguez</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/editor.css">
+</head>
+<body>
+
+  <!-- Barra Superior del Editor -->
+  <header class="editor-header">
+    <div class="header-left">
+      <div class="header-logo">
+        <span class="logo-badge">ASR</span>
+        <div>
+          <h1 class="header-title">Editor Local de CV</h1>
+          <span class="header-file" id="current-file-label">Archivo: docs/data/cv.json</span>
+        </div>
+      </div>
+      <div class="status-indicator" id="save-status">
+        <span class="status-dot"></span>
+        <span id="status-text">Sin cambios</span>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <!-- Input de archivo oculto para navegadores sin File System Access API -->
+      <input type="file" id="fallback-file-input" accept=".json" style="display:none">
+
+      <button type="button" class="btn btn-secondary" id="btn-open-file">
+        <span>📂</span> Abrir cv.json
+      </button>
+
+      <button type="button" class="btn btn-primary" id="btn-save-file">
+        <span>💾</span> Guardar en disco
+      </button>
+
+      <button type="button" class="btn btn-secondary" id="btn-download-json" title="Descargar copia del archivo JSON">
+        <span>📥</span> Exportar JSON
+      </button>
+
+      <a href="../docs/index.html" target="_blank" rel="noopener" class="btn btn-ghost" id="btn-view-web">
+        <span>👁</span> Ver Web Pública
+      </a>
+    </div>
+  </header>
+
+  <!-- Contenedor del Editor con Menú Lateral y Paneles -->
+  <div class="editor-layout">
+    
+    <!-- Sidebar de navegación por secciones -->
+    <aside class="editor-sidebar">
+      <nav class="sidebar-nav">
+        <button type="button" class="nav-tab active" data-tab="tab-profile">
+          <span class="tab-icon">👤</span>
+          <span class="tab-label">Perfil y Contacto</span>
+        </button>
+        <button type="button" class="nav-tab" data-tab="tab-experience">
+          <span class="tab-icon">💼</span>
+          <span class="tab-label">Experiencia Laboral</span>
+          <span class="tab-badge" id="count-experience">7</span>
+        </button>
+        <button type="button" class="nav-tab" data-tab="tab-collabs">
+          <span class="tab-icon">🏢</span>
+          <span class="tab-label">Colaboraciones Clave</span>
+          <span class="tab-badge" id="count-collabs">5</span>
+        </button>
+        <button type="button" class="nav-tab" data-tab="tab-education">
+          <span class="tab-icon">🎓</span>
+          <span class="tab-label">Formación Académica</span>
+          <span class="tab-badge" id="count-education">2</span>
+        </button>
+        <button type="button" class="nav-tab" data-tab="tab-skills">
+          <span class="tab-icon">⚡</span>
+          <span class="tab-label">Software y Competencias</span>
+        </button>
+        <button type="button" class="nav-tab" data-tab="tab-languages">
+          <span class="tab-icon">🌐</span>
+          <span class="tab-label">Idiomas</span>
+        </button>
+        <button type="button" class="nav-tab" data-tab="tab-raw">
+          <span class="tab-icon">📄</span>
+          <span class="tab-label">Visor / Editor JSON</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="tips-box">
+          <strong>💡 Consejo:</strong>
+          <p>Tras editar, pulsa <strong>Guardar en disco</strong>. Luego en VS Code haz <code>git commit</code> y <code>git push</code> para publicar.</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Área de contenido de pestañas -->
+    <main class="editor-content">
+
+      <!-- ================= TAB: PERFIL Y CONTACTO ================= -->
+      <section class="tab-panel active" id="tab-profile">
+        <div class="panel-header">
+          <div>
+            <h2 class="panel-title">Información del Perfil</h2>
+            <p class="panel-subtitle">Datos personales, presentación profesional y enlaces de contacto.</p>
+          </div>
+        </div>
+
+        <form id="form-profile" class="form-grid">
+          <!-- Nombre -->
+          <div class="form-group col-12">
+            <label for="prof-name">Nombre Completo</label>
+            <input type="text" id="prof-name" class="form-control" placeholder="Adrian Sotolongo Rodríguez">
+          </div>
+
+          <!-- Título Profesional ES / EN -->
+          <div class="form-group col-6">
+            <label for="prof-title-es">Título Profesional (Español)</label>
+            <input type="text" id="prof-title-es" class="form-control" placeholder="Arquitecto y Coordinador BIM Sénior">
+          </div>
+          <div class="form-group col-6">
+            <label for="prof-title-en">Título Profesional (Inglés)</label>
+            <input type="text" id="prof-title-en" class="form-control" placeholder="Architect & Senior BIM Coordinator">
+          </div>
+
+          <!-- Titular / Headline ES / EN -->
+          <div class="form-group col-6">
+            <label for="prof-head-es">Titular / Headline (Español)</label>
+            <input type="text" id="prof-head-es" class="form-control" placeholder="Coordinador BIM sénior (MEP/ARQ) | Revit y ACC...">
+          </div>
+          <div class="form-group col-6">
+            <label for="prof-head-en">Titular / Headline (Inglés)</label>
+            <input type="text" id="prof-head-en" class="form-control" placeholder="Senior BIM Coordinator (MEP/ARC) | Revit & ACC...">
+          </div>
+
+          <!-- Resumen / Bio ES / EN -->
+          <div class="form-group col-6">
+            <label for="prof-sum-es">Resumen Profesional (Español)</label>
+            <textarea id="prof-sum-es" class="form-control" rows="4"></textarea>
+          </div>
+          <div class="form-group col-6">
+            <label for="prof-sum-en">Resumen Profesional (Inglés)</label>
+            <textarea id="prof-sum-en" class="form-control" rows="4"></textarea>
+          </div>
+
+          <!-- Contacto -->
+          <div class="form-group col-4">
+            <label for="prof-email">Correo Electrónico</label>
+            <input type="email" id="prof-email" class="form-control">
+          </div>
+          <div class="form-group col-4">
+            <label for="prof-phone">Teléfono de Contacto</label>
+            <input type="text" id="prof-phone" class="form-control">
+          </div>
+          <div class="form-group col-4">
+            <label for="prof-loc">Ubicación</label>
+            <input type="text" id="prof-loc" class="form-control">
+          </div>
+
+          <div class="form-group col-4">
+            <label for="prof-linkedin">URL LinkedIn</label>
+            <input type="url" id="prof-linkedin" class="form-control">
+          </div>
+          <div class="form-group col-4">
+            <label for="prof-github">URL GitHub</label>
+            <input type="url" id="prof-github" class="form-control">
+          </div>
+          <div class="form-group col-4">
+            <label for="prof-portfolio">URL Portafolio Externo (opcional)</label>
+            <input type="url" id="prof-portfolio" class="form-control">
+          </div>
+
+          <!-- Rutas a PDFs -->
+          <div class="col-12"><hr class="divider"><h3>Archivos PDF Descargables</h3></div>
+          <div class="form-group col-6">
+            <label for="prof-pdf-es">Ruta PDF Español (ej. <code>files/cv-es.pdf</code>)</label>
+            <input type="text" id="prof-pdf-es" class="form-control">
+          </div>
+          <div class="form-group col-6">
+            <label for="prof-pdf-en">Ruta PDF Inglés (ej. <code>files/cv-en.pdf</code>)</label>
+            <input type="text" id="prof-pdf-en" class="form-control">
+          </div>
+        </form>
+      </section>
+
+      <!-- ================= TAB: EXPERIENCIA ================= -->
+      <section class="tab-panel" id="tab-experience">
+        <div class="panel-header">
+          <div>
+            <h2 class="panel-title">Experiencia Profesional</h2>
+            <p class="panel-subtitle">Añade, edita o reordena los puestos laborales.</p>
+          </div>
+          <button type="button" class="btn btn-primary" id="btn-add-experience">
+            <span>+</span> Añadir Puesto
+          </button>
+        </div>
+
+        <div class="cards-list" id="experience-items-container">
+          <!-- Renderizado dinámico desde editor.js -->
+        </div>
+      </section>
+
+      <!-- ================= TAB: COLABORACIONES ================= -->
+      <section class="tab-panel" id="tab-collabs">
+        <div class="panel-header">
+          <div>
+            <h2 class="panel-title">Colaboraciones y Proyectos Destacados</h2>
+            <p class="panel-subtitle">Proyectos de envergadura con socios o empresas clientes.</p>
+          </div>
+          <button type="button" class="btn btn-primary" id="btn-add-collab">
+            <span>+</span> Añadir Colaboración
+          </button>
+        </div>
+
+        <div class="cards-list" id="collabs-items-container">
+          <!-- Renderizado dinámico -->
+        </div>
+      </section>
+
+      <!-- ================= TAB: FORMACIÓN Y CERTIFICACIONES ================= -->
+      <section class="tab-panel" id="tab-education">
+        <div class="panel-header">
+          <div>
+            <h2 class="panel-title">Formación Académica y Certificaciones</h2>
+            <p class="panel-subtitle">Titulaciones universitarias y acreditaciones técnicas oficiales.</p>
+          </div>
+          <button type="button" class="btn btn-primary" id="btn-add-edu">
+            <span>+</span> Añadir Titulación
+          </button>
+        </div>
+
+        <h3 class="subheading">Titulaciones Universitarias</h3>
+        <div class="cards-list" id="edu-items-container">
+          <!-- Renderizado dinámico -->
+        </div>
+
+        <div class="panel-header" style="margin-top: 36px;">
+          <div>
+            <h3 class="panel-title">Certificaciones Profesionales</h3>
+            <p class="panel-subtitle">Escribe una certificación por línea.</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <textarea id="certifications-textarea" class="form-control" rows="8"></textarea>
+        </div>
+      </section>
+
+      <!-- ================= TAB: SOFTWARE Y COMPETENCIAS ================= -->
+      <section class="tab-panel" id="tab-skills">
+        <div class="panel-header">
+          <div>
+            <h2 class="panel-title">Software y Competencias Clave</h2>
+            <p class="panel-subtitle">Herramientas técnicas y aptitudes (separadas por comas).</p>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group col-12">
+            <label for="software-input">Software y Tecnologías BIM/CAD (separados por comas)</label>
+            <textarea id="software-input" class="form-control" rows="4"></textarea>
+            <small class="form-hint">Ejemplo: Revit, AutoCAD, Dynamo, Navisworks, ACC, Python, LISP...</small>
+          </div>
+
+          <div class="form-group col-12">
+            <label for="skills-input">Competencias Profesionales (separadas por comas)</label>
+            <textarea id="skills-input" class="form-control" rows="4"></textarea>
+            <small class="form-hint">Ejemplo: Liderazgo, Trabajo en equipo, Coordinación interdisciplinar, ISO 19650...</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= TAB: IDIOMAS ================= -->
+      <section class="tab-panel" id="tab-languages">
+        <div class="panel-header">
+          <div>
+            <h2 class="panel-title">Idiomas</h2>
+            <p class="panel-subtitle">Configura los idiomas para las versiones ES y EN.</p>
+          </div>
+        </div>
+
+        <div class="two-col-form">
+          <div class="lang-col">
+            <h3>Versión en Español (ES)</h3>
+            <div id="languages-es-container"></div>
+            <button type="button" class="btn btn-secondary btn-sm" id="btn-add-lang-es">+ Añadir Idioma (ES)</button>
+          </div>
+
+          <div class="lang-col">
+            <h3>Versión en Inglés (EN)</h3>
+            <div id="languages-en-container"></div>
+            <button type="button" class="btn btn-secondary btn-sm" id="btn-add-lang-en">+ Añadir Idioma (EN)</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= TAB: VISOR JSON ================= -->
+      <section class="tab-panel" id="tab-raw">
+        <div class="panel-header">
+          <div>
+            <h2 class="panel-title">Visor / Editor Directo de JSON</h2>
+            <p class="panel-subtitle">Visualiza o edita directamente la estructura cruda de <code>cv.json</code>.</p>
+          </div>
+          <div class="action-row">
+            <button type="button" class="btn btn-secondary" id="btn-format-json">Formatear</button>
+            <button type="button" class="btn btn-secondary" id="btn-copy-json">Copiar al Portapapeles</button>
+            <button type="button" class="btn btn-primary" id="btn-apply-json">Aplicar Cambios del JSON</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <textarea id="raw-json-textarea" class="form-control code-editor" rows="24" spellcheck="false"></textarea>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Toast notification banner -->
+  <div class="toast" id="toast"></div>
+
+  <script src="js/editor.js"></script>
+</body>
+</html>

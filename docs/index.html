@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Adrian Sotolongo Rodríguez — Arquitecto y Coordinador BIM Sénior (MEP/ARQ). Especialista en Revit, Autodesk Construction Cloud (ACC), ISO 19650 y automatización con Dynamo y LISP.">
+  <meta name="author" content="Adrian Sotolongo Rodríguez">
+  <title>Adrian Sotolongo Rodríguez · Senior BIM Coordinator & Architect</title>
+
+  <!-- Google Fonts: Space Grotesk, Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="mode-web">
+
+  <!-- Architectural Top Bar -->
+  <header class="arch-topbar" id="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-brand">
+        <span class="brand-monogram">ASR</span>
+        <div class="brand-titles">
+          <span class="brand-name">ADRIAN SOTOLONGO</span>
+          <span class="brand-role" data-i18n="nav.role">COORDINADOR BIM & ARQUITECTO</span>
+        </div>
+      </div>
+
+      <nav class="topbar-nav">
+        <a href="#experiencia" data-i18n="nav.experience">Experiencia</a>
+        <a href="#formacion" data-i18n="nav.education">Formación</a>
+        <a href="#competencias" data-i18n="nav.skills">Competencias</a>
+        <a href="#proyectos" data-i18n="nav.projects">Colaboraciones</a>
+      </nav>
+
+      <div class="topbar-actions">
+        <!-- Selector ES / EN -->
+        <div class="lang-switch" role="group" aria-label="Language selector">
+          <button type="button" class="lang-btn active" id="btn-lang-es" data-lang="es">ES</button>
+          <button type="button" class="lang-btn" id="btn-lang-en" data-lang="en">EN</button>
+        </div>
+
+        <!-- Descargar PDF -->
+        <a id="btn-download-pdf" href="files/cv-en.pdf" class="btn btn-outline" target="_blank" rel="noopener" download>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span data-i18n="actions.downloadPdf">Descargar PDF</span>
+        </a>
+
+        <!-- Imprimir A4 -->
+        <button type="button" id="btn-print-a4" class="btn btn-accent">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></button>
+          <span data-i18n="actions.printA4">Imprimir A4</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenedor Principal Horizontal / Widescreen Canvas -->
+  <main class="widescreen-canvas">
+
+    <!-- HERO / IDENTIDAD ARQUITECTÓNICA (Formato Horizontal Panorámico) -->
+    <section class="hero-horizontal" id="perfil">
+      <div class="hero-grid">
+        
+        <!-- Columna 1: Identidad & Monograma -->
+        <div class="hero-col-identity">
+          <div class="status-indicator-pill">
+            <span class="status-dot"></span>
+            <span data-i18n="hero.available">ACTIVO · MADRID</span>
+          </div>
+
+          <h1 class="hero-name">
+            <span class="highlight-stroke" id="profile-name">ADRIAN SOTOLONGO RODRÍGUEZ</span>
+          </h1>
+
+          <h2 class="hero-role" id="profile-title">
+            ARQUITECTO & COORDINADOR BIM SÉNIOR
+          </h2>
+
+          <p class="hero-headline" id="profile-headline">
+            Coordinador BIM sénior (MEP/ARQ) | Revit y ACC | ISO 19650 | Automatización Dynamo y LISP
+          </p>
+
+          <!-- Badges de pilares técnicos -->
+          <div class="hero-specs-row">
+            <span class="spec-pill"><strong>BIM</strong> Revit MEP/ARC</span>
+            <span class="spec-pill"><strong>CLOUD</strong> ACC / Autodesk</span>
+            <span class="spec-pill"><strong>NORMA</strong> ISO 19650</span>
+            <span class="spec-pill"><strong>AUTO</strong> Dynamo · LISP · AI</span>
+          </div>
+        </div>
+
+        <!-- Columna 2: Resumen / Declaración Profesional -->
+        <div class="hero-col-bio">
+          <div class="section-label-tag" data-i18n="hero.profileTag">00 / DECLARACIÓN PROFESIONAL</div>
+          <blockquote class="bio-quote">
+            <p id="profile-summary">
+              Arquitecto y coordinador BIM especializado en modelado interdisciplinar MEP/ARQ con Revit y Autodesk Construction Cloud (ACC). Experiencia en dirección de equipos técnicos, detección de interferencias, flujos de trabajo según ISO 19650 y desarrollo de automatizaciones avanzadas con Dynamo y LISP para la optimización de procesos de ingeniería y arquitectura.
+            </p>
+          </blockquote>
+        </div>
+
+        <!-- Columna 3: Tarjeta de Contacto & Enlaces Directos -->
+        <div class="hero-col-contact">
+          <div class="section-label-tag">CONTACTO DIRECTO</div>
+          <div class="contact-box">
+            <a href="mailto:adriso94yo@gmail.com" class="contact-line" id="contact-mail">
+              <span class="c-ico">✉</span>
+              <span class="c-val" id="val-mail">adriso94yo@gmail.com</span>
+            </a>
+            <a href="tel:+34613087100" class="contact-line" id="contact-phone">
+              <span class="c-ico">☏</span>
+              <span class="c-val" id="val-phone">+34 613 087 100</span>
+            </a>
+            <div class="contact-line">
+              <span class="c-ico">⌂</span>
+              <span class="c-val" id="val-location">Madrid, España</span>
+            </div>
+            <a href="https://www.linkedin.com/in/adriso94yo/" target="_blank" rel="noopener" class="contact-line" id="contact-linkedin">
+              <span class="c-ico">💼</span>
+              <span class="c-val">linkedin.com/in/adriso94yo</span>
+            </a>
+            <a href="https://github.com/adriso94yo" target="_blank" rel="noopener" class="contact-line" id="contact-github">
+              <span class="c-ico">⚡</span>
+              <span class="c-val">github.com/adriso94yo</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CUERPO PRINCIPAL HORIZONTAL (Columnas Invertidas según indicación) -->
+    <div class="content-horizontal-layout">
+
+      <!-- ================= COLUMNA IZQUIERDA: Formación, Software, Certificaciones, Idiomas y Colaboraciones ================= -->
+      <aside class="side-track">
+
+        <!-- 01 / FORMACIÓN ACADÉMICA -->
+        <div class="section-block" id="formacion">
+          <div class="block-header">
+            <div class="header-num">01</div>
+            <div class="header-info">
+              <h3 class="header-title" data-i18n="sections.education">FORMACIÓN ACADÉMICA</h3>
+            </div>
+            <div class="header-line"></div>
+          </div>
+
+          <div class="education-card-list" id="education-list">
+            <!-- Renderizado dinámico -->
+          </div>
+        </div>
+
+        <!-- 02 / SOFTWARE BIM & CAD -->
+        <div class="section-block" id="competencias">
+          <div class="block-header">
+            <div class="header-num">02</div>
+            <div class="header-info">
+              <h3 class="header-title" data-i18n="sections.skills">SOFTWARE & ECOSISTEMA BIM</h3>
+            </div>
+            <div class="header-line"></div>
+          </div>
+
+          <div class="software-pill-cloud" id="software-tags">
+            <!-- Renderizado dinámico -->
+          </div>
+
+          <!-- Competencias clave -->
+          <div class="sub-block-title" data-i18n="skills.competencies">COMPETENCIAS CLAVE</div>
+          <div class="skills-pill-cloud" id="skills-tags">
+            <!-- Renderizado dinámico -->
+          </div>
+        </div>
+
+        <!-- 03 / CERTIFICACIONES OFICIALES -->
+        <div class="section-block">
+          <div class="block-header">
+            <div class="header-num">03</div>
+            <div class="header-info">
+              <h3 class="header-title" data-i18n="sections.certifications">CERTIFICACIONES OFICIALES</h3>
+            </div>
+            <div class="header-line"></div>
+          </div>
+
+          <div class="certifications-list-airy" id="certifications-list">
+            <!-- Renderizado dinámico -->
+          </div>
+        </div>
+
+        <!-- 04 / IDIOMAS -->
+        <div class="section-block">
+          <div class="block-header">
+            <div class="header-num">04</div>
+            <div class="header-info">
+              <h3 class="header-title" data-i18n="skills.languages">IDIOMAS</h3>
+            </div>
+            <div class="header-line"></div>
+          </div>
+
+          <div class="languages-bars-airy" id="languages-list">
+            <!-- Renderizado dinámico -->
+          </div>
+        </div>
+
+        <!-- 05 / INFRAESTRUCTURAS & COLABORACIONES (Colocadas debajo de Idiomas) -->
+        <div class="section-block" id="proyectos">
+          <div class="block-header">
+            <div class="header-num">05</div>
+            <div class="header-info">
+              <h3 class="header-title" data-i18n="sections.collabs">INFRAESTRUCTURAS & COLABORACIONES</h3>
+              <p class="header-sub">Intervención en obras de envergadura: Data Centers, Hospitales e Industria.</p>
+            </div>
+            <div class="header-line"></div>
+          </div>
+
+          <div class="collabs-grid-spacious" id="collaborations-list">
+            <!-- Renderizado dinámico desde cv.json -->
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- ================= COLUMNA DERECHA: Experiencia Profesional ================= -->
+      <section class="main-track">
+
+        <!-- 06 / EXPERIENCIA PROFESIONAL -->
+        <div class="section-block" id="experiencia">
+          <div class="block-header">
+            <div class="header-num">06</div>
+            <div class="header-info">
+              <h3 class="header-title" data-i18n="sections.experience">EXPERIENCIA PROFESIONAL</h3>
+              <p class="header-sub">Modelado interdisciplinar, coordinación de instalaciones complejas y dirección BIM.</p>
+            </div>
+            <div class="header-line"></div>
+          </div>
+
+          <div class="experience-timeline" id="experience-list">
+            <!-- Renderizado dinámico desde cv.json con aire generoso -->
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+
+    <!-- Colofón Arquitectónico / Footer -->
+    <footer class="arch-colophon">
+      <div class="colophon-left">
+        <span class="mono-bold">ADRIAN SOTOLONGO RODRÍGUEZ</span>
+        <span class="divider-slash">/</span>
+        <span data-i18n="nav.role">COORDINADOR BIM & ARQUITECTO</span>
+        <span class="divider-slash">/</span>
+        <span>MADRID, ESPAÑA</span>
+      </div>
+      <div class="colophon-right">
+        <span>© <span id="current-year">2026</span> · GITHUB PAGES · HOSTED LOCALLY</span>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
