@@ -1,0 +1,311 @@
+{
+  "profile": {
+    "name": "Adrian Sotolongo Rodríguez",
+    "title": {
+      "en": "Architect & Senior BIM Coordinator",
+      "es": "Arquitecto y Coordinador BIM Sénior"
+    },
+    "headline": {
+      "en": "Senior BIM Coordinator (MEP/ARC) | Revit & ACC | ISO 19650 | Dynamo & LISP Automation",
+      "es": "Coordinador BIM sénior (MEP/ARQ) | Revit y ACC | ISO 19650 | Automatización Dynamo y LISP"
+    },
+    "summary": {
+      "en": "Architect and Senior BIM Coordinator specialized in interdisciplinary MEP/ARC modeling with Revit and Autodesk Construction Cloud (ACC). Experienced in technical team coordination, clash detection, ISO 19650 workflows, and developing advanced Dynamo and LISP automations to optimize engineering and architectural processes.",
+      "es": "Arquitecto y coordinador BIM especializado en modelado interdisciplinar MEP/ARQ con Revit y Autodesk Construction Cloud (ACC). Experiencia en dirección de equipos técnicos, detección de interferencias, flujos de trabajo según ISO 19650 y desarrollo de automatizaciones avanzadas con Dynamo y LISP para la optimización de procesos de ingeniería y arquitectura."
+    },
+    "email": "adriso94yo@gmail.com",
+    "phone": "+34 613 087 100",
+    "location": "Madrid, Spain",
+    "linkedin": "https://www.linkedin.com/in/adriso94yo/",
+    "linkedinHandle": "@adriso94yo",
+    "github": "https://github.com/adriso94yo",
+    "portfolio": ""
+  },
+  "files": {
+    "cv_en": "files/cv-en.pdf",
+    "cv_es": "files/cv-es.pdf"
+  },
+  "skills": [
+    "Leadership",
+    "Teamwork",
+    "Clash Detection",
+    "ISO 19650 Workflows",
+    "Interdisciplinary Coordination",
+    "Dynamo Scripting",
+    "LISP Automation",
+    "Creative Problem Solving",
+    "Adaptable",
+    "Productive & Dedicated"
+  ],
+  "software": [
+    "Revit",
+    "Autodesk Construction Cloud (ACC)",
+    "AutoCAD",
+    "Dynamo",
+    "Navisworks",
+    "PyRevit",
+    "DiRoots",
+    "ArchiCAD",
+    "SketchUp",
+    "Rhino",
+    "Twinmotion",
+    "Cype MEP",
+    "Autodesk Forma",
+    "Presto (Cost-it)",
+    "QGIS",
+    "Python",
+    "AutoLISP",
+    "AI (Gemini, NotebookLM)",
+    "HTML5 / CSS / JS"
+  ],
+  "languages": {
+    "en": [
+      { "name": "Spanish", "level": "Native" },
+      { "name": "English", "level": "Intermediate" }
+    ],
+    "es": [
+      { "name": "Español", "level": "Nativo" },
+      { "name": "Inglés", "level": "Intermedio" }
+    ]
+  },
+  "experience": [
+    {
+      "id": "exp-1",
+      "company": "Morph",
+      "role": {
+        "en": "BIM Coordinator",
+        "es": "Coordinador BIM"
+      },
+      "place": "Madrid, Spain",
+      "period": {
+        "en": "June 2025 – Present",
+        "es": "Junio 2025 – Actualidad"
+      },
+      "current": true,
+      "paragraphs": {
+        "en": [
+          "Interdisciplinary BIM modeling and coordination (MEP) using Revit for residential, healthcare, office, and other project types.",
+          "Coordination and planning of teamwork, clash detection, system calculations, and organization and preparation of documentation in accordance with ISO 19650.",
+          "Development of Dynamo and LISP automations, achieving significant time savings in repetitive processes, and integration of AI tools (Gemini, NotebookLM) to optimize team productivity."
+        ],
+        "es": [
+          "Modelado y coordinación BIM interdisciplinar (MEP) con Revit para proyectos residenciales, sanitarios, de oficinas y otros usos.",
+          "Coordinación y planificación del trabajo en equipo, detección de interferencias, cálculos de instalaciones y organización de documentación conforme a ISO 19650.",
+          "Desarrollo de automatizaciones con Dynamo y LISP para agilizar tareas repetitivas e integración de herramientas de IA (Gemini, NotebookLM) para mejorar la productividad del equipo."
+        ]
+      },
+      "specialties": "HVAC, FP, PLB, SAN, ELEC, VENT, POOL",
+      "tools": "Revit, Dynamo, AutoCAD, EasyDuct, ACC, Autodesk Forma, BimVision, Presto (Cost-it), Google Suite, Gemini, NotebookLM, Antigravity"
+    },
+    {
+      "id": "exp-2",
+      "company": "OnePlan",
+      "role": {
+        "en": "CAD Architect",
+        "es": "Arquitecto CAD"
+      },
+      "place": "Freelance Collaborator (remote), Spain",
+      "period": {
+        "en": "January – February 2025",
+        "es": "Enero – Febrero 2025"
+      },
+      "current": false,
+      "paragraphs": {
+        "en": [
+          "Preparation and editing of drawings for the design of sports infrastructure, access points, and logistics areas as part of the 2026 Olympic Games planning."
+        ],
+        "es": [
+          "Elaboración y edición de planos de infraestructuras deportivas, accesos y zonas logísticas como parte de la planificación de los Juegos Olímpicos de 2026."
+        ]
+      },
+      "specialties": "",
+      "tools": "AutoCAD, BricsCAD, Google Sheets, GIS"
+    },
+    {
+      "id": "exp-3",
+      "company": "CBS (CAD&BIM Services)",
+      "role": {
+        "en": "BIM/CAD Specialist",
+        "es": "Especialista BIM/CAD"
+      },
+      "place": "Madrid, Spain",
+      "period": {
+        "en": "September 2024 – May 2025",
+        "es": "Septiembre 2024 – Mayo 2025"
+      },
+      "current": false,
+      "paragraphs": {
+        "en": [
+          "BIM and CAD interdisciplinary modeling, coordination, and documentation preparation for various companies, including Modelical, GYGSA, EDIFESA, and SENER (Quark), working on projects involving data centers, hospitals, dams, and residential buildings."
+        ],
+        "es": [
+          "Modelado, coordinación y preparación de documentación BIM y CAD para distintas empresas, entre ellas Modelical, GYGSA, EDIFESA y SENER (Quark), en proyectos de centros de datos, hospitales, presas y edificios residenciales."
+        ]
+      },
+      "specialties": "HVAC, FP, PLB, SAN, ELEC",
+      "tools": "Revit, AutoCAD, Google Suite, ACC, Autodesk Viewer"
+    },
+    {
+      "id": "exp-4",
+      "company": "DIOC ingeniería",
+      "role": {
+        "en": "BIM/CAD Modeler",
+        "es": "Modelador BIM/CAD"
+      },
+      "place": "Madrid, Spain",
+      "period": {
+        "en": "February – July 2024",
+        "es": "Febrero – Julio 2024"
+      },
+      "current": false,
+      "paragraphs": {
+        "en": [
+          "Participated in BIM design and coordination, working alongside EIFFAGE on a pharmaceutical plant project. Preparation of As-Built drawings, material quantity takeoffs, and organization of schematics and technical labeling in documentation and on-site."
+        ],
+        "es": [
+          "Participación en el diseño y coordinación BIM junto con EIFFAGE en un proyecto de planta farmacéutica. Elaboración de planos As-Built, mediciones de materiales y organización de esquemas y etiquetado técnico en documentación y obra."
+        ]
+      },
+      "specialties": "HVAC, FP, PLB, SAN, ELEC",
+      "tools": "Revit, AutoCAD, Google Suite, ACC, Autodesk Viewer"
+    },
+    {
+      "id": "exp-5",
+      "company": "OnePlan",
+      "role": {
+        "en": "CAD Architect",
+        "es": "Arquitecto CAD"
+      },
+      "place": "Freelance Collaborator (remote), Spain",
+      "period": {
+        "en": "August – October 2023",
+        "es": "Agosto – Octubre 2023"
+      },
+      "current": false,
+      "paragraphs": {
+        "en": [
+          "Preparation of CAD drawings for event planning of the Paris 2024 Olympic Games, with export to a GIS platform for georeferencing."
+        ],
+        "es": [
+          "Elaboración de planos CAD para la planificación de eventos de los Juegos Olímpicos de París 2024, exportados a una plataforma SIG para su georreferenciación."
+        ]
+      },
+      "specialties": "",
+      "tools": "AutoCAD, BricsCAD, Google Sheets, GIS"
+    },
+    {
+      "id": "exp-6",
+      "company": "OSÉS Construcción",
+      "role": {
+        "en": "BIM/CAD Specialist & Site Manager Assistant",
+        "es": "Especialista BIM/CAD y asistente de jefe de obra"
+      },
+      "place": "Navarra, Spain",
+      "period": {
+        "en": "Internship · May – July 2023",
+        "es": "Prácticas · Mayo – Julio 2023"
+      },
+      "current": false,
+      "paragraphs": {
+        "en": [
+          "Supported BIM adoption by creating models, performing material quantity takeoffs, and conducting cost studies to demonstrate its benefits."
+        ],
+        "es": [
+          "Apoyo en la implantación BIM mediante creación de modelos, mediciones de materiales y estudios de costes para demostrar sus ventajas."
+        ]
+      },
+      "specialties": "ARCH",
+      "tools": "Revit, AutoCAD, Google Suite, MS Office, ACC, Autodesk Viewer, Presto"
+    },
+    {
+      "id": "exp-7",
+      "company": "IPROYAZ",
+      "role": {
+        "en": "BIM/CAD Specialist & Design Architect",
+        "es": "Especialista BIM/CAD y arquitecto proyectista"
+      },
+      "place": "Havana, Cuba",
+      "period": {
+        "en": "2018 – 2022",
+        "es": "2018 – 2022"
+      },
+      "current": false,
+      "paragraphs": {
+        "en": [
+          "Modeling, design, and preparation of drawings and documentation for architectural projects, including high- and mid-standard residential buildings, offices, and industrial facilities."
+        ],
+        "es": [
+          "Modelado, diseño y elaboración de planos y documentación para proyectos arquitectónicos, incluidos edificios residenciales, oficinas e instalaciones industriales."
+        ]
+      },
+      "specialties": "ARCH, PLB, SAN",
+      "tools": "Revit, ArchiCAD, AutoCAD, Google Suite, MS Office, ACC, Autodesk Viewer, BIMx"
+    }
+  ],
+  "education": [
+    {
+      "id": "edu-1",
+      "title": {
+        "en": "Master's Degree in Research and Innovation in Architecture. Intervention in Heritage, Rehabilitation, and Regeneration",
+        "es": "Máster en Investigación e Innovación en Arquitectura. Intervención en el Patrimonio, Rehabilitación y Regeneración"
+      },
+      "school": "ETSAVA, University of Valladolid, Spain",
+      "period": {
+        "en": "September 2022 – June 2023",
+        "es": "Septiembre 2022 – Junio 2023"
+      }
+    },
+    {
+      "id": "edu-2",
+      "title": {
+        "en": "Bachelor's Degree in Architecture",
+        "es": "Grado en Arquitectura"
+      },
+      "school": "Technological University of Havana (CUJAE), Cuba",
+      "period": {
+        "en": "June 2018",
+        "es": "Junio 2018"
+      }
+    }
+  ],
+  "certifications": [
+    "Certificate of Participation in the 8th Edition of the INSPIRELI Awards 2023.",
+    "Cert Prep: Revit MEP Mechanical & Plumbing Certified Professional",
+    "BIM Management: Careers",
+    "Revit and Power BI: Data Analysis",
+    "Archicad: Revit Workflow",
+    "Revit: Parameters and formulas",
+    "Revit: Introduction to Dynamo for Revit",
+    "Certification Prep: Revit for Electrical Design Professionals",
+    "Basic MEP Systems Calculation and Design",
+    "Introduction to BIM Project Management"
+  ],
+  "collaborations": [
+    {
+      "partner": "QUARK (SENER Group)",
+      "project": "2 Data Centers",
+      "location": "Spain"
+    },
+    {
+      "partner": "EIFFAGE",
+      "project": "ROVI Pharmaceutical Plant",
+      "location": "Spain"
+    },
+    {
+      "partner": "MODELICAL",
+      "project": "3 Hospitals",
+      "location": "Honduras"
+    },
+    {
+      "partner": "EDIFESA",
+      "project": "Student Residence",
+      "location": "Spain"
+    },
+    {
+      "partner": "GYGSA",
+      "project": "Dam Infrastructure",
+      "location": "Latin America"
+    }
+  ],
+  "projects": []
+}
