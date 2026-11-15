@@ -1,6 +1,6 @@
 /**
- * ADRIAN SOTOLONGO RODRÍGUEZ · CV & PORTFOLIO ARQUITECTÓNICO HORIZONTAL
- * Dynamic Renderer, Bilingual Engine (ES/EN) & Widescreen Desktop Controller
+ * ADRIAN SOTOLONGO RODRÍGUEZ · PERSONAL PORTFOLIO & ARCHITECTURAL CV
+ * Dynamic Renderer, Spotlight Cursor Mechanics, Scroll Reveal & Bilingual Engine
  */
 
 (function () {
@@ -15,11 +15,14 @@
       'nav.education': 'Formación',
       'nav.skills': 'Competencias',
       'actions.downloadPdf': 'Descargar PDF',
-      'actions.printA4': 'Imprimir A4',
-      'hero.available': 'ACTIVO · MADRID',
+      'actions.contact': 'Contactar',
+      'actions.backToTop': 'Volver arriba',
+      'hero.available': 'ACTIVO · MADRID / DISPONIBLE PARA PROYECTOS SINGULARES',
       'hero.profileTag': '00 / DECLARACIÓN PROFESIONAL',
+      'metrics.experience': 'AÑOS DE TRAYECTORIA TÉCNICA',
+      'metrics.coordination': 'COORDINACIÓN CLASH DETECTION',
       'sections.experience': 'EXPERIENCIA PROFESIONAL',
-      'sections.collabs': 'INFRAESTRUCTURAS & COLABORACIONES SINGULARES',
+      'sections.collabs': 'INFRAESTRUCTURAS & COLABORACIONES',
       'sections.education': 'FORMACIÓN ACADÉMICA',
       'sections.skills': 'SOFTWARE & ECOSISTEMA BIM',
       'sections.certifications': 'CERTIFICACIONES OFICIALES',
@@ -28,7 +31,7 @@
       'labels.specialties': 'Especialidades',
       'labels.tools': 'Herramientas',
       'labels.present': 'Actualidad',
-      'page.title': 'Adrian Sotolongo Rodríguez · Coordinador BIM Sénior & Arquitecto'
+      'page.title': 'Adrian Sotolongo Rodríguez · Senior BIM Coordinator & Architect'
     },
     en: {
       'nav.role': 'SENIOR BIM COORDINATOR & ARCHITECT',
@@ -37,9 +40,12 @@
       'nav.education': 'Education',
       'nav.skills': 'Skills',
       'actions.downloadPdf': 'Download PDF',
-      'actions.printA4': 'Print A4',
-      'hero.available': 'ACTIVE · MADRID',
+      'actions.contact': 'Contact',
+      'actions.backToTop': 'Back to top',
+      'hero.available': 'ACTIVE · MADRID / AVAILABLE FOR COMPLEX PROJECTS',
       'hero.profileTag': '00 / PROFESSIONAL STATEMENT',
+      'metrics.experience': 'YEARS OF TECHNICAL TRACK RECORD',
+      'metrics.coordination': 'CLASH DETECTION & COORDINATION',
       'sections.experience': 'PROFESSIONAL EXPERIENCE',
       'sections.collabs': 'INFRASTRUCTURE & MAJOR COLLABORATIONS',
       'sections.education': 'ACADEMIC BACKGROUND',
@@ -56,6 +62,7 @@
 
   let cvData = null;
   let currentLang = 'es';
+  let revealObserver = null;
 
   // Escape HTML helper
   function esc(str) {
@@ -111,7 +118,7 @@
 
     // Render Profile Header
     const prof = cvData.profile || {};
-    document.getElementById('profile-name').textContent = prof.name || 'ADRIAN SOTOLONGO RODRÍGUEZ';
+    document.getElementById('profile-name').textContent = prof.name || 'ADRIAN SOTOLONGO';
     document.getElementById('profile-title').textContent = getLoc(prof.title, currentLang);
     document.getElementById('profile-headline').textContent = getLoc(prof.headline, currentLang);
     document.getElementById('profile-summary').textContent = getLoc(prof.summary, currentLang);
@@ -141,12 +148,101 @@
     }
 
     // Render Sub-components
-    renderExperience();
-    renderCollaborations();
     renderEducation();
     renderSoftwareAndSkills();
     renderCertifications();
     renderLanguages();
+    renderCollaborations();
+    renderExperience();
+
+    // Re-bind interactive observers
+    observeRevealElements();
+  }
+
+  function renderEducation() {
+    const container = document.getElementById('education-list');
+    if (!container) return;
+    const list = cvData.education || [];
+
+    container.innerHTML = list.map(item => `
+      <div class="edu-showcase-box spotlight-card">
+        <h4 class="edu-showcase-title">${esc(getLoc(item.title, currentLang))}</h4>
+        <div class="edu-showcase-school">${esc(item.school)}</div>
+        <div class="edu-showcase-date">[${esc(getLoc(item.period, currentLang))}]</div>
+      </div>
+    `).join('');
+  }
+
+  function renderSoftwareAndSkills() {
+    // Software
+    const softContainer = document.getElementById('software-tags');
+    if (softContainer && cvData.software) {
+      softContainer.innerHTML = cvData.software.map(s => `
+        <span class="soft-pill-tag">${esc(s)}</span>
+      `).join('');
+    }
+
+    // Skills
+    const skillsContainer = document.getElementById('skills-tags');
+    if (skillsContainer && cvData.skills) {
+      skillsContainer.innerHTML = cvData.skills.map(sk => `
+        <span class="skill-pill-chip">${esc(sk)}</span>
+      `).join('');
+    }
+  }
+
+  function renderCertifications() {
+    const container = document.getElementById('certifications-list');
+    if (!container) return;
+    const list = cvData.certifications || [];
+
+    container.innerHTML = list.map(cert => `
+      <div class="cert-card-row">
+        <span class="cert-badge-dot">✦</span>
+        <span>${esc(cert)}</span>
+      </div>
+    `).join('');
+  }
+
+  function renderLanguages() {
+    const container = document.getElementById('languages-list');
+    if (!container) return;
+    const list = cvData.languages?.[currentLang] || cvData.languages?.['es'] || [];
+
+    container.innerHTML = list.map(item => {
+      const name = item.name || item;
+      const level = item.level || '';
+      const isNative = level.toLowerCase().includes('nativ');
+      const widthPct = isNative ? '100%' : '75%';
+
+      return `
+        <div class="lang-card-item">
+          <div class="lang-title-row">
+            <span>${esc(name)}</span>
+            <span class="lang-badge-level">${esc(level)}</span>
+          </div>
+          <div class="lang-track-bg">
+            <div class="lang-track-fill" style="width: ${widthPct}"></div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function renderCollaborations() {
+    const container = document.getElementById('collaborations-list');
+    if (!container) return;
+    const list = cvData.collaborations || [];
+
+    container.innerHTML = list.map(c => `
+      <div class="collab-showcase-card spotlight-card">
+        <div>
+          <div class="collab-tag-partner">✦ ${esc(c.partner)}</div>
+          <div class="collab-title-project">${esc(c.project)}</div>
+        </div>
+        <div class="collab-meta-loc">📍 ${esc(c.location || '')}</div>
+      </div>
+    `).join('');
   }
 
   function renderExperience() {
@@ -171,40 +267,40 @@
 
       // Specialties
       const specLine = job.specialties ? `
-        <div class="spec-line">
-          <span class="spec-line-label">${t['labels.specialties']}:</span>
-          <span class="spec-line-content">${esc(job.specialties)}</span>
+        <div class="tech-spec-row">
+          <span class="tech-spec-label">${t['labels.specialties']}:</span>
+          <span class="tech-spec-value">${esc(job.specialties)}</span>
         </div>` : '';
 
       // Tools
       const toolsLine = job.tools ? `
-        <div class="spec-line">
-          <span class="spec-line-label">${t['labels.tools']}:</span>
-          <span class="spec-line-content">${esc(job.tools)}</span>
+        <div class="tech-spec-row">
+          <span class="tech-spec-label">${t['labels.tools']}:</span>
+          <span class="tech-spec-value">${esc(job.tools)}</span>
         </div>` : '';
 
       return `
-        <article class="exp-card ${isCurrent ? 'is-current' : ''}">
-          <div class="exp-card-header">
+        <article class="exp-showcase-card spotlight-card">
+          <div class="exp-card-top-row">
             <div>
-              <h4 class="exp-role-heading">${role}</h4>
-              <div class="exp-company-sub">
-                <strong>${company}</strong>
+              <h4 class="exp-heading-role">${role}</h4>
+              <div class="exp-sub-company">
+                <span class="exp-company-highlight">${company}</span>
                 ${place ? ` · <span>${place}</span>` : ''}
               </div>
             </div>
-            <div class="exp-badges">
-              ${isCurrent ? `<span class="badge-present-pill">${t['labels.present']}</span>` : ''}
-              <span class="badge-period-pill">[${period}]</span>
+            <div class="exp-pills-cluster">
+              ${isCurrent ? `<span class="badge-present-glow">${t['labels.present']}</span>` : ''}
+              <span class="badge-period-dark">[${period}]</span>
             </div>
           </div>
 
-          <div class="exp-card-body">
+          <div class="exp-bullet-list">
             ${paragraphsHtml}
           </div>
 
           ${(specLine || toolsLine) ? `
-            <div class="exp-card-footer">
+            <div class="exp-tech-inset">
               ${specLine}
               ${toolsLine}
             </div>
@@ -214,90 +310,63 @@
     }).join('');
   }
 
-  function renderCollaborations() {
-    const container = document.getElementById('collaborations-list');
-    if (!container) return;
-    const list = cvData.collaborations || [];
+  // Interactive Spotlight Cursor Effect (Dot Matrix + Spotlight Cards)
+  function initSpotlightEffect() {
+    let ticking = false;
 
-    container.innerHTML = list.map(c => `
-      <div class="collab-item">
-        <div>
-          <div class="collab-partner-heading">▧ ${esc(c.partner)}</div>
-          <div class="collab-project-name">${esc(c.project)}</div>
-        </div>
-        <div class="collab-location-tag">📍 ${esc(c.location || '')}</div>
-      </div>
-    `).join('');
-  }
+    function updateSpotlight(clientX, clientY) {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          // 1. Actualiza coordenadas globales del cursor para la matriz de puntos del fondo
+          document.documentElement.style.setProperty('--cursor-x', `${clientX}px`);
+          document.documentElement.style.setProperty('--cursor-y', `${clientY}px`);
 
-  function renderEducation() {
-    const container = document.getElementById('education-list');
-    if (!container) return;
-    const list = cvData.education || [];
+          // 2. Actualiza el foco tridimensional de las tarjetas visibles
+          const vh = window.innerHeight;
+          document.querySelectorAll('.spotlight-card').forEach(card => {
+            const rect = card.getBoundingClientRect();
+            if (rect.bottom >= 0 && rect.top <= vh) {
+              const x = clientX - rect.left;
+              const y = clientY - rect.top;
+              card.style.setProperty('--mouse-x', `${x}px`);
+              card.style.setProperty('--mouse-y', `${y}px`);
+            }
+          });
 
-    container.innerHTML = list.map(item => `
-      <div class="edu-box">
-        <h4 class="edu-box-title">${esc(getLoc(item.title, currentLang))}</h4>
-        <div class="edu-box-school">${esc(item.school)}</div>
-        <div class="edu-box-date">[${esc(getLoc(item.period, currentLang))}]</div>
-      </div>
-    `).join('');
-  }
-
-  function renderSoftwareAndSkills() {
-    // Software
-    const softContainer = document.getElementById('software-tags');
-    if (softContainer && cvData.software) {
-      softContainer.innerHTML = cvData.software.map(s => `
-        <span class="software-tag">${esc(s)}</span>
-      `).join('');
+          ticking = false;
+        });
+        ticking = true;
+      }
     }
 
-    // Skills
-    const skillsContainer = document.getElementById('skills-tags');
-    if (skillsContainer && cvData.skills) {
-      skillsContainer.innerHTML = cvData.skills.map(sk => `
-        <span class="skill-tag">${esc(sk)}</span>
-      `).join('');
+    // Seguimiento del ratón (desktop)
+    window.addEventListener('mousemove', (e) => {
+      updateSpotlight(e.clientX, e.clientY);
+    }, { passive: true });
+
+    // Soporte táctil fluido (tablets / táctiles)
+    window.addEventListener('touchmove', (e) => {
+      if (e.touches && e.touches[0]) {
+        updateSpotlight(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    }, { passive: true });
+  }
+
+  // Scroll Reveal Observer
+  function observeRevealElements() {
+    if (!revealObserver) {
+      revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
     }
-  }
 
-  function renderCertifications() {
-    const container = document.getElementById('certifications-list');
-    if (!container) return;
-    const list = cvData.certifications || [];
-
-    container.innerHTML = list.map(cert => `
-      <div class="cert-row">
-        <span class="cert-bullet">▣</span>
-        <span>${esc(cert)}</span>
-      </div>
-    `).join('');
-  }
-
-  function renderLanguages() {
-    const container = document.getElementById('languages-list');
-    if (!container) return;
-    const list = cvData.languages?.[currentLang] || cvData.languages?.['es'] || [];
-
-    container.innerHTML = list.map(item => {
-      const name = item.name || item;
-      const level = item.level || '';
-      const isNative = level.toLowerCase().includes('nativ');
-      const widthPct = isNative ? '100%' : '75%';
-
-      return `
-        <div class="lang-item-airy">
-          <div class="lang-header-row">
-            <span>${esc(name)}</span>
-            <span class="lang-level-badge">${esc(level)}</span>
-          </div>
-          <div class="lang-track">
-            <div class="lang-fill-bar" style="width: ${widthPct}"></div>
-          </div>
-        </div>
-      `;
-    }).join('');
+    document.querySelectorAll('.reveal').forEach(el => {
+      revealObserver.observe(el);
+    });
   }
 
   // Switch language
@@ -320,10 +389,9 @@
     document.getElementById('btn-lang-es')?.addEventListener('click', () => switchLang('es'));
     document.getElementById('btn-lang-en')?.addEventListener('click', () => switchLang('en'));
 
-    // Event listeners: Print A4
-    document.getElementById('btn-print-a4')?.addEventListener('click', () => {
-      window.print();
-    });
+    // Initialize Spotlight & Scroll animations
+    initSpotlightEffect();
+    observeRevealElements();
 
     try {
       const res = await fetch('data/cv.json', { cache: 'no-cache' });
