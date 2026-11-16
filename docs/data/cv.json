@@ -1,4 +1,4 @@
-{
+﻿{
   "profile": {
     "name": "Adrian Sotolongo Rodríguez",
     "title": {
@@ -307,5 +307,15 @@
       "location": "Latin America"
     }
   ],
-  "projects": []
+  "projects": [],
+  "icons": {
+    "email": "icons/email.svg",
+    "phone": "icons/phone.svg",
+    "location": "icons/location.svg",
+    "linkedin": "icons/linkedin.svg",
+    "portfolio": "icons/portfolio.svg",
+    "skills": "icons/skills.svg",
+    "softwares": "icons/softwares.svg",
+    "languages": "icons/languages.svg"
+  }
 }

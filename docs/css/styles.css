@@ -458,6 +458,40 @@ a {
   color: var(--accent-amber);
 }
 
+/* SVG Icons — Custom Affinity Designer icons */
+.icon-svg {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+  /* Tint amber to match accent color */
+  filter: invert(72%) sepia(42%) saturate(541%) hue-rotate(2deg) brightness(97%) contrast(89%);
+  transition: filter 0.25s ease;
+}
+
+/* Smaller variant for collab meta rows */
+.icon-svg--sm {
+  width: 14px;
+  height: 14px;
+}
+
+/* On hover of contact-pill, shift icon tint to match text */
+.contact-pill:hover:not(.static-pill) .icon-svg {
+  filter: invert(72%) sepia(42%) saturate(541%) hue-rotate(2deg) brightness(97%) contrast(89%);
+}
+
+/* Section header SVG icons */
+.section-icon-svg {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+  filter: invert(72%) sepia(42%) saturate(541%) hue-rotate(2deg) brightness(97%) contrast(89%);
+  opacity: 0.85;
+}
+
 /* Bento Metrics Grid */
 .metrics-bento-grid {
   display: grid;

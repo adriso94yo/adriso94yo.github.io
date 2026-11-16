@@ -240,7 +240,7 @@
           <div class="collab-tag-partner">✦ ${esc(c.partner)}</div>
           <div class="collab-title-project">${esc(c.project)}</div>
         </div>
-        <div class="collab-meta-loc">📍 ${esc(c.location || '')}</div>
+        <div class="collab-meta-loc"><img class="icon-svg icon-svg--sm" src="icons/location.svg" alt=""> ${esc(c.location || '')}</div>
       </div>
     `).join('');
   }
